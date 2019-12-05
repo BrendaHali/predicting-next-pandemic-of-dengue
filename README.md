@@ -1,3 +1,5 @@
+![Header](./3-Images/Dengue_prediction-BH.png)
+
 # Predicting the Next Pandemic of Dengue
 #### by Brenda Hali
 
@@ -9,6 +11,8 @@ Dengue is a mosquito-borne viral infection that has spread throughout the tropic
 The Centers for Disease Control (CDC) estimates one third of the world population is exposed to the dengue virus and is at risk of contracting the disease. According to the CDC “As many as 400 million people are infected yearly.” The World Mosquito Program states that “500,000 cases develop into dengue hemorrhagic fever… which results in up to 25,000 deaths annually worldwide.”  The World Health Organization (WHO) in their publication “Global strategy for dengue prevention and control 2012-2020” asserts that “Dengue morbidity can be reduced by implementing improved outbreak prediction and detection through coordinated epidemiological and entomological surveillance”.
 
 A large number of studies have confirmed that the incidence of dengue is positively correlated with climatic conditions, specifically, temperature, humidity and precipitation levels. Many of these studies include quantitative models correlating climate variables with the incidence of dengue cases.
+
+![Map1](./3-Images/dengue_2015.png)
 
 Looking to answer the question: How well would we be able to predict future cases of the disease based on climate variables that are included in weather forecasts? Several departments of the U.S. Federal Government have joined efforts to create the Dengue Forecasting project, which makes climate and dengue data available to data scientists at large and challenges them to submit predictive models to help forecast future dengue epidemics.
 
@@ -84,6 +88,10 @@ The goal is to answer the question: **How well would we be able to predict futur
 
 Metadata Furter explanation: <https://dengueforecasting.noaa.gov/docs/Metadata.pdf>
 
+#### Total Cases Distribution in the Data
+![Total_cases](./3-Images/total_cases.png)
+
+
 --- 
 
 ### Methodology
@@ -92,42 +100,70 @@ The project follows a typical Machine Learning Process:
 
 ![mosquito_tech](./3-Images/Mosquito.png)
 
-1. Obtain data
-2. Perform exploratory data analysis
-3. Choose a learning model
-4. Preprocess	the data for machine learning	model (feature	engineering)
-5. Tune the model
-6. Run	the model on the test dataset
-7. Capture predictions
-8. Iterate for better results
-
-#### Performance Metric and Evaluation
-
-Mean absolute error (MAE) is the mean absolute difference between predictions yˆ and observations y over n data points:
+1. Data processing
+2. Exploratory data analysis
+3. Parameters tunnig
+4. Modeling
+3. Performance test
+4. Conclusions and recommendations
 
 
+#### Data findings and main changes
 
-#### Modeling Process
+**Dengue Over Time ***
+![baseline_preds](./3-Images/dengue_overtime.png)
+
+
+- The first approach taken to fill NANs is using the panas techique ffill() witch fills the NAN with the “last known value” that is available at every time point.
+- Target variable, total_cases is a non-negative integer, which means We are looking to make some count predictions.
+- Standard regression techniques for this type of prediction include Poisson regression and negative binomial regression.
+- Data was split by City given that they follow different patterns.
+- Whitout ploting correlations yet, we can see that the seasonallity plays a big role. I can assume that how warm the weather is and the humidity will be main determinants for the model.
+
+
+#### Correlations findings:
+![All Features Correlations](./3-Images/all_features_correlation.png)
+
+- Total_cases variable doesn't have many obvious strong correlations, most of its correlations are weak.
+- Temperature data are strongly correlated, which is expected.
+- I will drop some values and run a correlation matrix again - This could help us to understand better the problem.
+
+
+#### Model results
 
 To model the data, a simple baseline model, FBProphet and SARIMAX models were used.
+FB Prophet was the model that performed better with the following results: 
 
-FB Prophet was the model that performed better with the following results:
+**First Model***
+![baseline_preds](./3-Images/baseline_preds.png)
+
+
+**Model Selected: FBProphet**
+
+**San Juan, Puerto Rico. **
+![baseline_preds](./3-Images/FBProphet-sj.png)
+
+
+
+**Iquitos, Peru. **
+![baseline_preds](./3-Images/FBProphet-iq.png)
+
 
 
 ## Conclusions  
-"This week" weather is not important. Mosquitoes reproduce better in warm, humid weather. Eggs take from 4 to 6 weeks to hatch. And from 4 to 8 months for the first cases to appear.
-Right now, given that there is not enough organized data, dengue is still difficult to predict and prevent accurately
+- "This week" weather is not important. Mosquitoes reproduce better in warm, humid weather. Eggs take from 4 to 6 weeks to hatch. And from 4 to 8 months for the first cases to appear.
+- Right now, given that there is not enough organized data, dengue is still difficult to predict and prevent accurately
 Hyperparameters and feature engineering matter!
 
 ### Next Steps
-Make with more data, create a model that is useful anywhere in the world.
-Connect it with a dynamic database for ‘live’ results.
+- Make with more data, create a model that is useful anywhere in the world.
+- Connect it with a dynamic database for ‘live’ results.
 
+
+--- 
 
 ### Computational resources:
 To run properly the project you can refer to the `0-Installs` notebook located in the `2-Code` f. older
-
-
 
 #### References and external resources:
 
