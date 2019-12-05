@@ -12,55 +12,85 @@ A large number of studies have confirmed that the incidence of dengue is positiv
 
 Looking to answer the question: How well would we be able to predict future cases of the disease based on climate variables that are included in weather forecasts? Several departments of the U.S. Federal Government have joined efforts to create the Dengue Forecasting project, which makes climate and dengue data available to data scientists at large and challenges them to submit predictive models to help forecast future dengue epidemics.
 
-Accurate dengue predictions would help public health workers, government, and people around the world take steps to reduce the impact of these epidemics
-
----
-
-
-## Executive Summary
-
-[ A Paragraph saying what I did with the project ]
-
-----
+Accurate dengue predictions would help public health workers, government, and people around the world take steps to reduce the impact of these epidemics.
 
 
 ### Project Goal
 
-The goal is to answer the question: How well would we be able to predict future cases of the disease based on climate variables that are included in weather forecasts?
+The goal is to answer the question: **How well would we be able to predict future cases of the disease based on climate variables that are included in weather forecasts?**
 
 
 ### Data Description
 
-- Dengue data. Historical surveillance data was provided for two endemic locations: Iquitos, Peru and San Juan, Puerto Rico. The data include weekly laboratory-confirmed and serotype-specific cases for each location.
+- **Dengue data.** Historical surveillance data was provided for two endemic locations: Iquitos, Peru and San Juan, Puerto Rico. The data include weekly laboratory-confirmed and serotype-specific cases for each location.
 
-- Other data. Environmental data from weather stations, satellites, and climate models are also provided along with relevant metadata.
+- **Other data.** Environmental data from weather stations, satellites, and climate models are also provided along with relevant metadata.
 
-- Temporal range. Data corresponds to two time periods at each location, a training period and a testing time period. The initial data only covers the training period, 1990-2009 for San Juan and 2000-2009 for Iquitos. Testing data for 2009- 2013.
+- **Temporal range.** Data corresponds to two time periods at each location, a training period and a testing time period. The initial data only covers the training period, 1990-2009 for San Juan and 2000-2009 for Iquitos. Testing data for 2009- 2013.
 
+#### Data Dictionary
 
-The data full description can be found here [link to the document].
+#### Abreviations
 
-
-
-
-
-
-
-
+|Value | Description|
+|---:| :---| 
+|sj | San Juan, Puerto Rico|
+|iq | Iquitos, Peru|
 
 
+#### Date Format
+|Value | Description|
+| ---:| :---| 
+|week_start_date |  yyyy-mm-dd format|
 
 
+#### Data Descriptions
+
+|Value |Description|Source|
+|:---|:---|:---|
+|ndvi_se | Pixel southeast of city centroid| NOAA's CDR Satellite vegetation|
+|ndvi_sw | Pixel southwest of city centroid|NOAA's CDR Satellite vegetation|
+|ndvi_ne | Pixel northeast of city centroid|NOAA's CDR Satellite vegetation|
+|ndvi_nw |Pixel northwest of city centroid|NOAA's CDR Satellite vegetation|
+|precipitation_amt_mm | Total precipitation| PERSIANN satellite|
+|reanalysis_sat_precip_amt_mm|Total precipitation|NOAA's NCEP Climate Forecast|
+|reanalysis_dew_point_temp_k |Mean dew point temperature|NOAA's NCEP Climate Forecast|
+|reanalysis_air_temp_k | Mean air temperature|NOAA's NCEP Climate Forecast|
+|reanalysis_relative_humidity_percent |Mean relative humidity|NOAA's NCEP Climate Forecast|
+|reanalysis_specific_humidity_g_per_kg| Mean specific humidity|NOAA's NCEP Climate Forecast|
+|reanalysis_precip_amt_kg_per_m2 | Total precipitation|NOAA's NCEP Climate Forecast|
+|reanalysis_max_air_temp_k | Maximum air temperature|NOAA's NCEP Climate Forecast|
+|reanalysis_min_air_temp_k | Minimum air temperature|NOAA's NCEP Climate Forecast|
+|reanalysis_avg_temp_k | Average air temperature|NOAA's NCEP Climate Forecast|
+|reanalysis_tdtr_k | Diurnal temperature range|NOAA's NCEP Climate Forecast|
+|station_max_temp_c |Maximum temperature|NOAA's GHCN daily climate data |
+|station_min_temp_c | Minimum temperature|NOAA's GHCN daily climate data|
+|station_avg_temp_c | Average temperature|NOAA's GHCN daily climate data|
+|station_precip_mm | Total precipitation|NOAA's GHCN daily climate data|
+|station_diur_temp_rng_c | Diurnal temperature range|NOAA's GHCN daily climate data|
 
 
+#### Data Source Description
 
+- PERSIANN satellite precipitation measurements 0.25x0.25 degree scale)
 
+- NOAA's GHCN daily climate data weather station measurements
+
+- NOAA's NCEP Climate Forecast System Reanalysis measurements (0.5x0.5 degree scale)
+
+- Satellite vegetation - Normalized difference vegetation index (NDVI) - NOAA's CDR Normalized 
+
+- Difference Vegetation Index (0.5x0.5 degree scale) measurements
+
+Metadata Furter explanation: <https://dengueforecasting.noaa.gov/docs/Metadata.pdf>
+
+--- 
 
 ### Methodology
 
-The project follows a typical Machine Learning Process
+The project follows a typical Machine Learning Process:
 
-[image]
+![mosquito_tech](./3-Images/Mosquito.png)
 
 1. Obtain data
 2. Perform exploratory data analysis
@@ -77,16 +107,11 @@ Mean absolute error (MAE) is the mean absolute difference between predictions y�
 
 
 
-
-
 #### Modeling Process
 
 To model the data, a simple baseline model, FBProphet and SARIMAX models were used.
 
 FB Prophet was the model that performed better with the following results:
-
-
-
 
 
 ## Conclusions  
@@ -99,11 +124,7 @@ Make with more data, create a model that is useful anywhere in the world.
 Connect it with a dynamic database for ‘live’ results.
 
 
-
-
 ### Computational resources:
-
-
 To run properly the project you can refer to the `0-Installs` notebook located in the `2-Code` f. older
 
 
