@@ -1,6 +1,5 @@
 
 # Predicting the Next Pandemic of Dengue
-#### by Brenda Hali
 
 ![Headers4](./3-Images/Dengue_prediction-BH.png)
 
