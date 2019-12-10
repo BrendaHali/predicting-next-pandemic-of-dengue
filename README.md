@@ -110,7 +110,7 @@ The project follows a typical Machine Learning Process:
 
 #### Data findings and main changes
 
-**Dengue Over Time ***
+**Dengue Over Time**
 ![baseline_preds](./3-Images/dengue_overtime.png)
 
 
@@ -134,18 +134,18 @@ The project follows a typical Machine Learning Process:
 To model the data, a simple baseline model, FBProphet and SARIMAX models were used.
 FB Prophet was the model that performed better with the following results: 
 
-**First Model***
+**First Model**
 ![baseline_preds](./3-Images/baseline_preds.png)
 
 
 **Model Selected: FBProphet**
 
-**San Juan, Puerto Rico. **
+**San Juan, Puerto Rico.**
 ![baseline_preds](./3-Images/FBProphet-sj.png)
 
 
 
-**Iquitos, Peru. **
+**Iquitos, Peru.**
 ![baseline_preds](./3-Images/FBProphet-iq.png)
 
 
